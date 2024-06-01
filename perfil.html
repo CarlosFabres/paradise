@@ -143,12 +143,11 @@
                 <label for="email">Correo Electrónico:</label>
                 <input type="email" class="form-control" id="email" required>
             </div>
+            <div id="perfilMessages" class="alert alert-success d-none my-2">
+                <a href="#" class="close" onclick="closeMessage()">x</a>
+            </div>
             <button type="submit" class="btn btn-primary mt-2">Guardar Cambios</button>
         </form>
-    </div>
-    <div class="container profile-container">
-        <!-- Resto de tu contenido de perfil -->
-        <button id="logout-btn" class="btn btn-danger">Cerrar Sesión</button>
     </div>
 
     <!--//////////FOOTER//////////-->
@@ -188,10 +187,11 @@
         const profileImage = document.getElementById('profile-image');
         const profileImageInput = document.getElementById('profile-image-input');
         const loginNavItem = document.getElementById('loginNavItem');
-    
+        const perfilMessages = document.getElementById("perfilMessages");
+
         // Verificar si hay una sesión activa al cargar la página
         const isUserLoggedIn = localStorage.getItem('isLoggedIn');
-    
+
         if (isUserLoggedIn) {
             // Si hay un usuario autenticado, cambia el contenido del enlace a "Salir"
             loginNavItem.innerHTML = `
@@ -206,13 +206,13 @@
                 window.location.href = '/login.html'; // Redirige a la página de inicio de sesión
             });
         }
-    
+
         // Obtener el usuario actualmente autenticado
         const currentUserEmail = localStorage.getItem('currentUser');
         const users = JSON.parse(localStorage.getItem('users')) || {};
-    
+
         const storedUser = users[currentUserEmail];
-    
+
         if (storedUser) {
             nameInput.value = storedUser.name;
             emailInput.value = storedUser.email;
@@ -220,11 +220,11 @@
                 profileImage.src = storedUser.image;
             }
         }
-    
+
         profileImage.addEventListener('click', function () {
             profileImageInput.click();
         });
-    
+
         profileImageInput.addEventListener('change', function (event) {
             const file = event.target.files[0];
             if (file) {
@@ -235,21 +235,25 @@
                 reader.readAsDataURL(file);
             }
         });
-    
+
         profileForm.addEventListener('submit', function (event) {
             event.preventDefault();
-    
+
             // Actualizar los datos del usuario en localStorage
             const updatedUser = {
                 name: nameInput.value,
                 email: emailInput.value,
-                password: storedUser.password, // mantener la contraseña existente
+                password: storedUser.password,
                 image: profileImage.src
             };
-    
+
             users[currentUserEmail] = updatedUser;
             localStorage.setItem('users', JSON.stringify(users));
-            alert('Perfil actualizado exitosamente');
+            perfilMessages.innerHTML = "Perfil actualizado exitosamente";
+            perfilMessages.classList.remove("d-none");
+            setTimeout(function () {
+                perfilMessages.classList.add("d-none");
+            }, 2000);
         });
     });
 </script>

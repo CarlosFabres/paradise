@@ -4,19 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Paradise Essence</title>
+    <title>Admin Paradise Essence</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" type="image/png" href="img/logoEmpresa.png">
     <style>
-        .sticky-top {
-            position: -webkit-sticky;
-            position: sticky;
-            top: 0;
-            z-index: 1020;
-        }
-
         .card {
             height: 100%;
             transition: all 0.3s;
@@ -43,115 +36,32 @@
 </head>
 
 <body>
-    <!--//////////NAVBAR//////////-->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="img/logoEmpresa.png" alt="Logo de la empresa" width="35" height="35"
-                    class="d-inline-block align-text-top">
-                <span class="ms-2">Paradise Essence</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Marcas
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Jean Paul Gaultier</a></li>
-                            <li><a class="dropdown-item" href="#">Versace</a></li>
-                            <li><a class="dropdown-item" href="#">Lattafa</a></li>
-                            <li><a class="dropdown-item" href="#">Afnan</a></li>
-                            <li><a class="dropdown-item" href="#">Moschino</a></li>
-                            <li><a class="dropdown-item" href="#">Paco Rabanne</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Perfumes
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Para Hombre</a></li>
-                            <li><a class="dropdown-item" href="#">Para Mujer</a></li>
-                            <li><a class="dropdown-item" href="#">Perfumes Unisex</a></li>
-                            <li><a class="dropdown-item" href="#">Perfumes Árabes</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <form class="d-flex flex-grow-1 mx-3" role="search">
-                    <input class="form-control me-2 flex-grow-1" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </form>
-                <ul class="navbar-nav mb-2 mb-lg-0 text-center">
-                    <li class="nav-item" id="loginNavItem">
-                        <a class="nav-link" href="/login.html">
-                            <i class="fas fa-user"></i><br>
-                            Ingresar
-                        </a>
-                    </li>
-                    <li class="nav-item position-relative">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-shopping-cart"></i><br>
-                            Carrito
-                            <span
-                                class="badge bg-danger position-absolute top-0 start-100 translate-middle badge-cart-count"
-                                style="display: none;">0</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-
-
-    <!--//////////CAROUSEL//////////-->
-    <div id="carouselExampleIndicators" class="carousel slide">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <a href="#">
-                    <img src="img/ARMAF.jpg" class="d-block w-100" alt="...">
-                </a>
-            </div>
-            <div class="carousel-item">
-                <a href="#">
-                    <img src="img/ASAD.jpg" class="d-block w-100" alt="...">
-                </a>
-
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-
     <div class="container-fluid">
         <!-- Sección de productos -->
         <div class="container my-5">
+            <!-- Encabezado -->
+            <header class="my-4">
+                <h1 class="text-center">Panel de Administrador - Paradise Essence</h1>
+                <button class="btn btn-danger my-2" onclick="cerrarSesion()">Cerrar Sesión</button>
+            </header>
+
             <div class="row">
+                <!-- Producto 1 -->
+                <div class="col-lg-2 col-md-3 col-6 mb-2">
+                    <div class="card">
+                        <img src="img/cdnWoman.jpg" class="card-img-top" alt="Perfume 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Perfume 1</h5>
+                            <!-- Identificadores únicos para descripción y precio -->
+                            <p class="card-text" id="descripcionProducto1">Descripción del perfume 1.</p>
+                            <p class="card-text" id="precioProducto1"><strong>$49.99</strong></p>
+                            <!-- Botón para editar -->
+                            <button class="btn btn-primary"
+                                onclick="editarProducto('descripcionProducto1', 'precioProducto1')">Editar</button>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Producto 1 -->
                 <div class="col-lg-2 col-md-3 col-6 mb-2">
                     <div class="card">
@@ -323,53 +233,28 @@
             </div>
         </div>
     </div>
-
-
-    <!--//////////FOOTER//////////-->
-    <footer class="card text-center">
-        <div class="card-header">
-            ¡Descubre la esencia del paraíso con Paradise Essence!
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">¡Explora nuestro mundo de fragancias únicas!</h5>
-            <p class="card-text">Sumérgete en una experiencia sensorial con nuestras exquisitas fragancias. Encuentra la
-                perfecta para cada ocasión y deja que Paradise Essence te transporte a un paraíso olfativo inigualable.
-            </p>
-            <a href="#" class="btn btn-primary">Explorar Perfumes</a>
-        </div>
-        <div class="card-footer text-body-secondary">
-            Síguenos en las redes sociales para descubrir las últimas novedades y ofertas exclusivas<br>
-            <a href="#" class="text-decoration-none text-body-secondary me-1"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="text-decoration-none text-body-secondary me-1"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="text-decoration-none text-body-secondary me-1"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="text-decoration-none text-body-secondary me-1"><i class="fab fa-pinterest"></i></a>
-            <a href="#" class="text-decoration-none text-body-secondary"><i class="fab fa-youtube"></i></a>
-        </div>
-    </footer>
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script>
-        // Verificar si hay una sesión activa al cargar la página
-        const isUserLoggedIn = localStorage.getItem('isLoggedIn');
-
-        if (isUserLoggedIn) {
-            // Si hay un usuario autenticado, cambia el contenido del enlace a "Salir"
-            loginNavItem.innerHTML = `
-            <a class="nav-link" href="/perfil.html">
-                            <i class="fas fa-user"></i><br>
-                            Perfil
-                        </a>`;
-            // Añade evento clic para cerrar sesión
-            const logoutLink = document.getElementById('logoutLink');
-            logoutLink.addEventListener('click', function () {
-                localStorage.removeItem("isLoggedIn"); // Elimina la sesión del usuario
-                window.location.href = '/login.html'; // Redirige a la página de inicio de sesión
-            });
+        // Función para cerrar la sesión del usuario
+        function cerrarSesion() {
+            localStorage.removeItem("isLoggedIn"); // Elimina la sesión del usuario
+            window.location.href = '/login.html'; // Redirecciona a la página de inicio de sesión
         }
+        // Función para editar la descripción y el precio del producto
+        function editarProducto(idDescripcion, idPrecio) {
+            // Solicitar al administrador que ingrese la nueva descripción y precio
+            var nuevaDescripcion = prompt("Ingrese la nueva descripción:");
+            var nuevoPrecio = prompt("Ingrese el nuevo precio:");
+
+            // Actualizar los elementos HTML con los nuevos valores ingresados
+            document.getElementById(idDescripcion).textContent = nuevaDescripcion;
+            document.getElementById(idPrecio).innerHTML = "<strong>$" + nuevoPrecio + "</strong>";
+        }
+
     </script>
+
 </body>
 
 </html>

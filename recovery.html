@@ -22,8 +22,8 @@
             flex-direction: column;
             min-height: 100vh;
         }
-        
-        footer{
+
+        footer {
             margin-top: auto;
         }
 
@@ -113,13 +113,15 @@
     <div class="container">
         <h2>Recuperar Contraseña</h2>
         <form id="recoverForm">
-          <div class="form-group">
-            <label for="recoverEmail">Correo Electrónico:</label>
-            <input type="email" class="form-control" id="recoverEmail" required>
-          </div>
-          <button type="submit" class="btn btn-primary my-2">Recuperar</button>
+            <div class="form-group">
+                <label for="recoverEmail">Correo Electrónico:</label>
+                <input type="email" class="form-control" id="recoverEmail" required>
+            </div>
+            <div id="recoveryErrorMessages" class="alert alert-danger d-none my-2"></div>
+            <div id="recoveryMessages" class="alert alert-success d-none my-2"></div>
+            <button type="submit" class="btn btn-primary my-2">Recuperar</button>
         </form>
-      </div>
+    </div>
 
 
 
@@ -149,6 +151,33 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const recoverForm = document.getElementById("recoverForm");
+            const recoveryMessages = document.getElementById("recoveryMessages");
+            const recoveryErrorMessages = document.getElementById("recoveryErrorMessages");
+            
+
+            // Obtener usuarios existentes o inicializar un objeto vacío si no hay usuarios
+            const users = JSON.parse(localStorage.getItem("users")) || {};
+
+            //Recuperar Contraseña
+            recoverForm.addEventListener("submit", function (event) {
+                event.preventDefault();
+                const email = document.getElementById("recoverEmail").value;
+                const storedUser = JSON.parse(localStorage.getItem("user"));
+                // Verificar si el usuario con el correo electrónico proporcionado existe
+                if (users[email]) {
+                    recoveryMessages.innerHTML = `Se ha enviado un correo electrónico a la dirección proporcionada con las instrucciones para restablecer su contraseña: ${users[email].password}`;
+                    recoveryMessages.classList.remove("d-none");
+                    recoveryErrorMessages.classList.add("d-none");
+                } else {
+                    recoveryErrorMessages.innerHTML = "Correo no registrado.";
+                    recoveryErrorMessages.classList.remove("d-none");
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
