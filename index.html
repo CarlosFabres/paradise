@@ -35,9 +35,9 @@
             height: 100%;
         }
 
-        .product-info {
-            flex-grow: 1;
-            /* Esto permite que este div ocupe el espacio restante */
+        .card-body>p {
+            margin-top: auto;
+            /* Empuja el precio hacia abajo */
         }
     </style>
 </head>
@@ -87,7 +87,7 @@
                     </li>
                 </ul>
                 <form class="d-flex flex-grow-1 mx-3" role="search">
-                    <input class="form-control me-2 flex-grow-1" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control me-2 flex-grow-1" type="search" placeholder="Buscar" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">
                         <i class="fas fa-search"></i>
                     </button>
@@ -159,7 +159,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Club De Nuit Woman</h5>
                             <p class="card-text">Armaf EDP 100ml</p>
-                            <p class="card-text"><strong>$45.000</strong></p>
+                            <p class="card-text card-price"><strong>$45.000</strong></p>
                             <a href="#" class="btn btn-primary">
                                 <i class="fas fa-shopping-cart"></i> Añadir
                             </a>
