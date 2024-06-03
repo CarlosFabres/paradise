@@ -9,30 +9,8 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="icon" type="image/png" href="img/logoEmpresa.png">
-    <style>
-        .card {
-            height: 100%;
-            transition: all 0.3s;
-            border: none;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
-        }
+    <link rel="stylesheet" href="css/admin.css">
 
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card-body {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-        }
-
-        .card-body>p {
-            margin-top: auto;
-            /* Empuja el precio hacia abajo */
-        }
-    </style>
 </head>
 
 <body>
@@ -53,8 +31,8 @@
                         <img src="img/cdnWoman.jpg" class="card-img-top" alt="Perfume 1">
                         <div class="card-body">
                             <h5 class="card-title">Club De Nuit Woman</h5>
-                            <p class="card-text"id="descripcionProducto1">Armaf EDP 100ml</p>
-                            <p class="card-text"id="precioProducto1"><strong>$45.000</strong></p>
+                            <p class="card-text" id="descripcionProducto1">Armaf EDP 100ml</p>
+                            <p class="card-text" id="precioProducto1"><strong>$45.000</strong></p>
                             <button class="btn btn-primary"
                                 onclick="editarProducto('descripcionProducto1', 'precioProducto1')">Editar</button>
                         </div>
@@ -66,8 +44,8 @@
                         <img src="img/erosFlame.jpg" class="card-img-top" alt="Perfume 2">
                         <div class="card-body">
                             <h5 class="card-title">Eros Flame</h5>
-                            <p class="card-text"id="descripcionProducto2">Versace EDP 100ml</p>
-                            <p class="card-text"id="precioProducto2"><strong>$75.000</strong></p>
+                            <p class="card-text" id="descripcionProducto2">Versace EDP 100ml</p>
+                            <p class="card-text" id="precioProducto2"><strong>$75.000</strong></p>
                             <button class="btn btn-primary"
                                 onclick="editarProducto('descripcionProducto2', 'precioProducto2')">Editar</button>
                         </div>
@@ -79,8 +57,8 @@
                         <img src="img/gentleman.jpg" class="card-img-top" alt="Perfume 3">
                         <div class="card-body">
                             <h5 class="card-title">Gentleman Intense</h5>
-                            <p class="card-text"id="descripcionProducto3">Givenchy EDT 100ml</p>
-                            <p class="card-text"id="precioProducto3"><strong>$65.000</strong></p>
+                            <p class="card-text" id="descripcionProducto3">Givenchy EDT 100ml</p>
+                            <p class="card-text" id="precioProducto3"><strong>$65.000</strong></p>
                             <button class="btn btn-primary"
                                 onclick="editarProducto('descripcionProducto3', 'precioProducto3')">Editar</button>
                         </div>
@@ -92,8 +70,8 @@
                         <img src="img/jpgEscandal.jpg" class="card-img-top" alt="Perfume 4">
                         <div class="card-body">
                             <h5 class="card-title">Scandal Pour Homme</h5>
-                            <p class="card-text"id="descripcionProducto4">Jean Paul Gaultier EDT 100ml</p>
-                            <p class="card-text"id="precioProducto4"><strong>$80.000</strong></p>
+                            <p class="card-text" id="descripcionProducto4">Jean Paul Gaultier EDT 100ml</p>
+                            <p class="card-text" id="precioProducto4"><strong>$80.000</strong></p>
                             <button class="btn btn-primary"
                                 onclick="editarProducto('descripcionProducto4', 'precioProducto4')">Editar</button>
                         </div>
@@ -105,8 +83,8 @@
                         <img src="img/laattafaAsad.jpg" class="card-img-top" alt="Perfume 5">
                         <div class="card-body">
                             <h5 class="card-title">Asad</h5>
-                            <p class="card-text"id="descripcionProducto5">Lattafa Perfumes EDP 100ml</p>
-                            <p class="card-text"id="precioProducto5"><strong>$35.000</strong></p>
+                            <p class="card-text" id="descripcionProducto5">Lattafa Perfumes EDP 100ml</p>
+                            <p class="card-text" id="precioProducto5"><strong>$35.000</strong></p>
                             <button class="btn btn-primary"
                                 onclick="editarProducto('descripcionProducto5', 'precioProducto5')">Editar</button>
                         </div>
@@ -118,8 +96,8 @@
                         <img src="img/manX.jpg" class="card-img-top" alt="Perfume 6">
                         <div class="card-body">
                             <h5 class="card-title">Halloween Man X</h5>
-                            <p class="card-text"id="descripcionProducto6">Halloween EDT 100ml</p>
-                            <p class="card-text"id="precioProducto6"><strong>$25.000</strong></p>
+                            <p class="card-text" id="descripcionProducto6">Halloween EDT 100ml</p>
+                            <p class="card-text" id="precioProducto6"><strong>$25.000</strong></p>
                             <button class="btn btn-primary"
                                 onclick="editarProducto('descripcionProducto6', 'precioProducto6')">Editar</button>
                         </div>
@@ -131,8 +109,8 @@
                         <img src="img/phantom.jpg" class="card-img-top" alt="Perfume 6">
                         <div class="card-body">
                             <h5 class="card-title">Phantom</h5>
-                            <p class="card-text"id="descripcionProducto7">Paco Rabanne EDT 100ml</p>
-                            <p class="card-text"id="precioProducto7"><strong>$75.000</strong></p>
+                            <p class="card-text" id="descripcionProducto7">Paco Rabanne EDT 100ml</p>
+                            <p class="card-text" id="precioProducto7"><strong>$75.000</strong></p>
                             <button class="btn btn-primary"
                                 onclick="editarProducto('descripcionProducto7', 'precioProducto7')">Editar</button>
                         </div>
@@ -144,8 +122,8 @@
                         <img src="img/toyBoy.jpg" class="card-img-top" alt="Perfume 6">
                         <div class="card-body">
                             <h5 class="card-title">Toy Boy</h5>
-                            <p class="card-text"id="descripcionProducto8">Moschino EDP 100ml</p>
-                            <p class="card-text"id="precioProducto8"><strong>$80.000</strong></p>
+                            <p class="card-text" id="descripcionProducto8">Moschino EDP 100ml</p>
+                            <p class="card-text" id="precioProducto8"><strong>$80.000</strong></p>
                             <button class="btn btn-primary"
                                 onclick="editarProducto('descripcionProducto8', 'precioProducto8')">Editar</button>
                         </div>
@@ -157,8 +135,8 @@
                         <img src="img/jpgUltraMale.jpg" class="card-img-top" alt="Perfume 6">
                         <div class="card-body">
                             <h5 class="card-title">Ultra Male</h5>
-                            <p class="card-text"id="descripcionProducto9">Jean Paul Gaultier EDT 75ml</p>
-                            <p class="card-text"id="precioProducto9"><strong>$50.000</strong></p>
+                            <p class="card-text" id="descripcionProducto9">Jean Paul Gaultier EDT 75ml</p>
+                            <p class="card-text" id="precioProducto9"><strong>$50.000</strong></p>
                             <button class="btn btn-primary"
                                 onclick="editarProducto('descripcionProducto9', 'precioProducto9')">Editar</button>
                         </div>
@@ -170,8 +148,8 @@
                         <img src="img/afnanTurathiBlue.jpg" class="card-img-top" alt="Perfume 6">
                         <div class="card-body">
                             <h5 class="card-title">Turathi Blue</h5>
-                            <p class="card-text"id="descripcionProducto10">Afnan EDT 100ml</p>
-                            <p class="card-text"id="precioProducto10"><strong>$32.000</strong></p>
+                            <p class="card-text" id="descripcionProducto10">Afnan EDT 100ml</p>
+                            <p class="card-text" id="precioProducto10"><strong>$32.000</strong></p>
                             <button class="btn btn-primary"
                                 onclick="editarProducto('descripcionProducto10', 'precioProducto10')">Editar</button>
                         </div>
@@ -183,8 +161,8 @@
                         <img src="img/spiceBomb.jpg" class="card-img-top" alt="Perfume 6">
                         <div class="card-body">
                             <h5 class="card-title">Spicebomb Extreme</h5>
-                            <p class="card-text"id="descripcionProducto11">Viktor&Rolf EDP 100ml</p>
-                            <p class="card-text"id="precioProducto11"><strong>$120.000</strong></p>
+                            <p class="card-text" id="descripcionProducto11">Viktor&Rolf EDP 100ml</p>
+                            <p class="card-text" id="precioProducto11"><strong>$120.000</strong></p>
                             <button class="btn btn-primary"
                                 onclick="editarProducto('descripcionProducto11', 'precioProducto11')">Editar</button>
                         </div>
@@ -196,8 +174,8 @@
                         <img src="img/theMostWanted.jpg" class="card-img-top" alt="Perfume 6">
                         <div class="card-body">
                             <h5 class="card-title">The Most Wanted</h5>
-                            <p class="card-text"id="descripcionProducto12">Azzaro EDP 100ml</p>
-                            <p class="card-text"id="precioProducto12"><strong>$85.000</strong></p>
+                            <p class="card-text" id="descripcionProducto12">Azzaro EDP 100ml</p>
+                            <p class="card-text" id="precioProducto12"><strong>$85.000</strong></p>
                             <button class="btn btn-primary"
                                 onclick="editarProducto('descripcionProducto12', 'precioProducto12')">Editar</button>
                         </div>
@@ -209,24 +187,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-    <script>
-        // Función para cerrar la sesión del usuario
-        function cerrarSesion() {
-            localStorage.removeItem("isLoggedIn"); // Elimina la sesión del usuario
-            window.location.href = '/login.html'; // Redirecciona a la página de inicio de sesión
-        }
-        // Función para editar la descripción y el precio del producto
-        function editarProducto(idDescripcion, idPrecio) {
-            // Solicitar al administrador que ingrese la nueva descripción y precio
-            var nuevaDescripcion = prompt("Ingrese la nueva descripción:");
-            var nuevoPrecio = prompt("Ingrese el nuevo precio:");
-
-            // Actualizar los elementos HTML con los nuevos valores ingresados
-            document.getElementById(idDescripcion).textContent = nuevaDescripcion;
-            document.getElementById(idPrecio).innerHTML = "<strong>$" + nuevoPrecio + "</strong>";
-        }
-
-    </script>
+    <script src="js/admin.js"></script>
 
 </body>
 

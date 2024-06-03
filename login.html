@@ -9,33 +9,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/fcafddbe20.js" crossorigin="anonymous"></script>
     <link rel="icon" type="image/png" href="img/logoEmpresa.png">
-    <style>
-        .sticky-top {
-            position: -webkit-sticky;
-            position: sticky;
-            top: 0;
-            z-index: 1020;
-        }
-
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        footer {
-            margin-top: auto;
-        }
-
-        .container {
-            max-width: 500px;
-            margin-top: 50px;
-            background: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+    <link rel="stylesheet" href="css/login.css">
 </head>
 
 <body>
@@ -157,39 +131,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <script src="js/login.js"></script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const loginForm = document.getElementById("loginForm");
-            const loginErrorMessages = document.getElementById("loginErrorMessages");
 
-            loginForm.addEventListener("submit", function (event) {
-                event.preventDefault();
-                const email = document.getElementById("email").value;
-                const password = document.getElementById("pwd").value;
-
-                // Obtener usuarios existentes
-                const users = JSON.parse(localStorage.getItem("users")) || {};
-
-                // Verificar si el usuario existe y las credenciales son correctas
-                if (users[email] && users[email].password === password) {
-                    // Establecer indicador de sesión al iniciar sesión
-                    localStorage.setItem("isLoggedIn", true);
-                    // Guardar el correo electrónico del usuario actualmente autenticado
-                    localStorage.setItem("currentUser", email);
-                    if (email === "admin@admin") {
-                        window.location.href = "admin.html"; // Redirigir a vista de administrador
-                    } else {
-                        window.location.href = "perfil.html";
-                    }
-                } else {
-                    loginErrorMessages.innerHTML = "Credenciales incorrectas";
-                    loginErrorMessages.classList.remove("d-none");
-                }
-            });
-        });
-
-    </script>
 </body>
 
 </html>
