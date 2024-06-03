@@ -17,25 +17,25 @@
             z-index: 1020;
         }
 
-        .card {
+        .product-card {
             height: 100%;
             transition: all 0.3s;
             border: none;
             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
         }
 
-        .card:hover {
+        .product-card:hover {
             transform: translateY(-5px);
         }
 
-        .card-body {
+        .product-card .card-body {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             height: 100%;
         }
 
-        .card-body>p {
+        .product-card .card-body>p {
             margin-top: auto;
             /* Empuja el precio hacia abajo */
         }
@@ -103,17 +103,14 @@
                         <a class="nav-link" href="#">
                             <i class="fas fa-shopping-cart"></i><br>
                             Carrito
-                            <span
-                                class="badge bg-danger position-absolute top-0 start-100 translate-middle badge-cart-count"
-                                style="display: none;">0</span>
+                            <span class="badge bg-danger position-absolute top-0 translate-middle badge-cart-count mt-2"
+                                style="display: none; border-radius: 50%;">0</span>
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-
-
 
     <!--//////////CAROUSEL//////////-->
     <div id="carouselExampleIndicators" class="carousel slide">
@@ -149,227 +146,429 @@
     </div>
 
     <div class="container-fluid">
-        <!-- Sección de productos -->
-        <div class="container my-5">
+        <!-- Filtro de productos -->
+        <div class="container my-3">
             <div class="row">
-                <!-- Producto 1 -->
-                <div class="col-lg-2 col-md-3 col-6 mb-2">
-                    <div class="card">
-                        <img src="img/cdnWoman.jpg" class="card-img-top" alt="Perfume 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Club De Nuit Woman</h5>
-                            <p class="card-text">Armaf EDP 100ml</p>
-                            <p class="card-text card-price"><strong>$45.000</strong></p>
-                            <a href="#" class="btn btn-primary">
-                                <i class="fas fa-shopping-cart"></i> Añadir
-                            </a>
+                <div class="col-md-4">
+                    <label for="priceFilter" class="form-label">Filtrar por precio:</label>
+                    <select id="priceFilter" class="form-select">
+                        <option value="all">Todos</option>
+                        <option value="0-30000">0 - 30.000</option>
+                        <option value="30001-60000">30.001 - 60.000</option>
+                        <option value="60001-100000">60.001 - 100.000</option>
+                        <option value="100001-">Más de 100.000</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="brandFilter" class="form-label">Filtrar por marca:</label>
+                    <select id="brandFilter" class="form-select">
+                        <option value="all">Todas</option>
+                        <option value="Jean Paul Gaultier">Jean Paul Gaultier</option>
+                        <option value="Versace">Versace</option>
+                        <option value="Lattafa">Lattafa</option>
+                        <option value="Afnan">Afnan</option>
+                        <option value="Moschino">Moschino</option>
+                        <option value="Paco Rabanne">Paco Rabanne</option>
+                        <option value="Givenchy">Givenchy</option>
+                        <option value="Halloween">Halloween</option>
+                        <option value="Viktor&Rolf">Viktor&Rolf</option>
+                        <option value="Azzaro">Azzaro</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <!-- Sección de productos -->
+            <div class="container my-5">
+                <div class="row">
+
+                    <!-- Modal del Carrito -->
+                    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="cartModalLabel">Carrito de Compras</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <ul id="cartItemsList" class="list-group">
+                                        <!-- Los productos del carrito se agregarán aquí -->
+                                    </ul>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cerrar</button>
+                                    <a href="#" class="btn btn-primary">Ir a Pagar</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- Producto 2 -->
-                <div class="col-lg-2 col-md-3 col-6 mb-2">
-                    <div class="card">
-                        <img src="img/erosFlame.jpg" class="card-img-top" alt="Perfume 2">
-                        <div class="card-body">
-                            <h5 class="card-title">Eros Flame</h5>
-                            <p class="card-text">Versace EDP 100ml</p>
-                            <p class="card-text"><strong>$75.000</strong></p>
-                            <a href="#" class="btn btn-primary">
-                                <i class="fas fa-shopping-cart"></i> Añadir
-                            </a>
+
+                    <!-- Incluimos Bootstrap JS y Popper.js -->
+                    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+                        integrity="sha384-eMNTo7Y6QmlC9Rm2NmfQ8EdEflrxFc4uPUv5rQQAo7h3hxVgi0rRZ1qM2GpN5K+U"
+                        crossorigin="anonymous"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+                        integrity="sha384-qmFQFJzZBsF+AFx64xw6HIJzA78oLeXQam9yTTW0nHewVPRlmkpbbEK6I5Ikm+ui"
+                        crossorigin="anonymous"></script>
+
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const priceFilter = document.getElementById('priceFilter');
+                            const brandFilter = document.getElementById('brandFilter');
+                            const productCards = document.querySelectorAll('.col-lg-2');
+                            // Función para actualizar la cantidad de productos en el carrito
+
+
+                            function filterProducts() {
+                                const priceValue = priceFilter.value;
+                                const brandValue = brandFilter.value;
+
+                                productCards.forEach(card => {
+                                    const productPrice = parseInt(card.getAttribute('data-price'));
+                                    const productBrand = card.getAttribute('data-brand');
+
+                                    let isPriceMatch = false;
+                                    if (priceValue === 'all') {
+                                        isPriceMatch = true;
+                                    } else {
+                                        const [minPrice, maxPrice] = priceValue.split('-').map(Number);
+                                        isPriceMatch = productPrice >= minPrice && (maxPrice ? productPrice <= maxPrice : true);
+                                    }
+
+                                    const isBrandMatch = brandValue === 'all' || productBrand === brandValue;
+
+                                    if (isPriceMatch && isBrandMatch) {
+                                        card.style.display = '';
+                                    } else {
+                                        card.style.display = 'none';
+                                    }
+                                });
+                            }
+                            priceFilter.addEventListener('change', filterProducts);
+                            brandFilter.addEventListener('change', filterProducts);
+
+                            function updateCartCount() {
+                                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                                const cartCount = cart.reduce((count, product) => count + product.quantity, 0);
+                                const cartCountElement = document.querySelector('.badge-cart-count');
+
+                                if (cartCount > 0) {
+                                    cartCountElement.textContent = cartCount;
+                                    cartCountElement.style.display = 'inline-block';
+                                } else {
+                                    cartCountElement.style.display = 'none';
+                                }
+                            }
+
+                            // Función para añadir productos al carrito
+                            function addToCart(productId, productName, productPrice) {
+                                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                                const existingProductIndex = cart.findIndex(product => product.id === productId);
+
+                                if (existingProductIndex !== -1) {
+                                    cart[existingProductIndex].quantity += 1;
+                                } else {
+                                    cart.push({ id: productId, name: productName, price: productPrice, quantity: 1 });
+                                }
+
+                                localStorage.setItem('cart', JSON.stringify(cart));
+                                updateCartCount();
+                            }
+
+                            // Función para eliminar un producto del carrito
+                            function removeFromCart(productId) {
+                                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                                cart = cart.filter(product => product.id !== productId);
+                                localStorage.setItem('cart', JSON.stringify(cart));
+                                updateCartCount();
+                                showCartItems();
+                            }
+
+                            // Función para mostrar los productos en el modal del carrito
+                            function showCartItems() {
+                                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                                const cartItemsList = document.getElementById('cartItemsList');
+                                cartItemsList.innerHTML = ''; // Limpia la lista
+
+                                if (cart.length > 0) {
+                                    cart.forEach(product => {
+                                        const listItem = document.createElement('li');
+                                        listItem.className = 'list-group-item d-flex justify-content-between align-items-center';
+                                        listItem.innerHTML = `
+                                            ${product.name} (x${product.quantity}) - $${(product.price * product.quantity).toLocaleString('es-CL')}
+                                            <button class="btn btn-danger btn-sm remove-item" data-product-id="${product.id}">&times;</button>
+                                        `;
+                                        cartItemsList.appendChild(listItem);
+                                    });
+
+                                    // Asigna el evento de clic a los botones de eliminar
+                                    const removeButtons = document.querySelectorAll('.remove-item');
+                                    removeButtons.forEach(button => {
+                                        button.addEventListener('click', function () {
+                                            const productId = this.getAttribute('data-product-id');
+                                            removeFromCart(productId);
+                                        });
+                                    });
+                                } else {
+                                    const emptyMessage = document.createElement('li');
+                                    emptyMessage.className = 'list-group-item';
+                                    emptyMessage.textContent = 'El carrito está vacío';
+                                    cartItemsList.appendChild(emptyMessage);
+                                }
+                            }
+
+                            // Asigna el evento de clic a los botones de "Añadir"
+                            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+                            addToCartButtons.forEach(button => {
+                                button.addEventListener('click', function (event) {
+                                    event.preventDefault();
+                                    const productId = this.getAttribute('data-product-id');
+                                    const productName = this.parentElement.querySelector('.card-title').textContent;
+                                    const productPrice = parseFloat(this.parentElement.querySelector('.card-price strong').textContent.replace('$', '').replace('.', '').replace(',', '.'));
+
+                                    addToCart(productId, productName, productPrice);
+                                });
+                            });
+
+                            // Evento para mostrar el carrito al hacer clic en el icono del carrito
+                            const cartIcon = document.querySelector('.fa-shopping-cart').parentElement;
+                            cartIcon.addEventListener('click', function (event) {
+                                event.preventDefault();
+                                showCartItems();
+                                const cartModal = new bootstrap.Modal(document.getElementById('cartModal'));
+                                cartModal.show();
+                            });
+
+                            // Actualiza la cantidad de productos en el carrito al cargar la página
+                            updateCartCount();
+                        });
+                    </script>
+
+                    <!-- Producto 1 -->
+                    <div class="col-lg-2 col-md-3 col-6 mb-2" data-price="45000" data-brand="Armaf">
+                        <div class="card product-card">
+                            <img src="img/cdnWoman.jpg" class="card-img-top" alt="Perfume 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Club De Nuit Woman</h5>
+                                <p class="card-text">Armaf EDP 100ml</p>
+                                <p class="card-text card-price"><strong>$45.000</strong></p>
+                                <a href="#" class="btn btn-primary add-to-cart" data-product-id="1">
+                                    <i class="fas fa-shopping-cart"></i> Añadir
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- Producto 3 -->
-                <div class="col-lg-2 col-md-3 col-6 mb-2">
-                    <div class="card">
-                        <img src="img/gentleman.jpg" class="card-img-top" alt="Perfume 3">
-                        <div class="card-body">
-                            <h5 class="card-title">Gentleman Intense</h5>
-                            <p class="card-text">Givenchy EDT 100ml</p>
-                            <p class="card-text"><strong>$39.99</strong></p>
-                            <a href="#" class="btn btn-primary">
-                                <i class="fas fa-shopping-cart"></i> Añadir
-                            </a>
+                    <!-- Producto 2 -->
+                    <div class="col-lg-2 col-md-3 col-6 mb-2" data-price="75000" data-brand="Versace">
+                        <div class="card product-card">
+                            <img src="img/erosFlame.jpg" class="card-img-top" alt="Perfume 2">
+                            <div class="card-body">
+                                <h5 class="card-title">Eros Flame</h5>
+                                <p class="card-text">Versace EDP 100ml</p>
+                                <p class="card-text card-price"><strong>$75.000</strong></p>
+                                <a href="#" class="btn btn-primary add-to-cart" data-product-id="2">
+                                    <i class="fas fa-shopping-cart"></i> Añadir
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- Producto 4 -->
-                <div class="col-lg-2 col-md-3 col-6 mb-2">
-                    <div class="card">
-                        <img src="img/jpgEscandal.jpg" class="card-img-top" alt="Perfume 4">
-                        <div class="card-body">
-                            <h5 class="card-title">Scandal Pour Homme</h5>
-                            <p class="card-text">Jean Paul Gaultier EDT 100ml</p>
-                            <p class="card-text"><strong>$80.000</strong></p>
-                            <a href="#" class="btn btn-primary">
-                                <i class="fas fa-shopping-cart"></i> Añadir
-                            </a>
+                    <!-- Producto 3 -->
+                    <div class="col-lg-2 col-md-3 col-6 mb-2" data-price="65000" data-brand="Givenchy">
+                        <div class="card product-card">
+                            <img src="img/gentleman.jpg" class="card-img-top" alt="Perfume 3">
+                            <div class="card-body">
+                                <h5 class="card-title">Gentleman Intense</h5>
+                                <p class="card-text">Givenchy EDT 100ml</p>
+                                <p class="card-text card-price"><strong>$65.000</strong></p>
+                                <a href="#" class="btn btn-primary add-to-cart" data-product-id="3">
+                                    <i class="fas fa-shopping-cart"></i> Añadir
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- Producto 5 -->
-                <div class="col-lg-2 col-md-3 col-6 mb-2">
-                    <div class="card">
-                        <img src="img/laattafaAsad.jpg" class="card-img-top" alt="Perfume 5">
-                        <div class="card-body">
-                            <h5 class="card-title">Asad</h5>
-                            <p class="card-text">Lattafa Perfumes EDP 100ml</p>
-                            <p class="card-text"><strong>$35.000</strong></p>
-                            <a href="#" class="btn btn-primary">
-                                <i class="fas fa-shopping-cart"></i> Añadir
-                            </a>
+                    <!-- Producto 4 -->
+                    <div class="col-lg-2 col-md-3 col-6 mb-2" data-price="80000" data-brand="Jean Paul Gaultier">
+                        <div class="card product-card">
+                            <img src="img/jpgEscandal.jpg" class="card-img-top" alt="Perfume 4">
+                            <div class="card-body">
+                                <h5 class="card-title">Scandal Pour Homme</h5>
+                                <p class="card-text">Jean Paul Gaultier EDT 100ml</p>
+                                <p class="card-text card-price"><strong>$80.000</strong></p>
+                                <a href="#" class="btn btn-primary add-to-cart" data-product-id="4">
+                                    <i class="fas fa-shopping-cart"></i> Añadir
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- Producto 6 -->
-                <div class="col-lg-2 col-md-3 col-6 mb-2">
-                    <div class="card">
-                        <img src="img/manX.jpg" class="card-img-top" alt="Perfume 6">
-                        <div class="card-body">
-                            <h5 class="card-title">Halloween Man X</h5>
-                            <p class="card-text">Halloween EDT 100ml</p>
-                            <p class="card-text"><strong>$25.000</strong></p>
-                            <a href="#" class="btn btn-primary">
-                                <i class="fas fa-shopping-cart"></i> Añadir
-                            </a>
+                    <!-- Producto 5 -->
+                    <div class="col-lg-2 col-md-3 col-6 mb-2" data-price="35000" data-brand="Lattafa">
+                        <div class="card product-card">
+                            <img src="img/laattafaAsad.jpg" class="card-img-top" alt="Perfume 5">
+                            <div class="card-body">
+                                <h5 class="card-title">Asad</h5>
+                                <p class="card-text">Lattafa Perfumes EDP 100ml</p>
+                                <p class="card-text card-price"><strong>$35.000</strong></p>
+                                <a href="#" class="btn btn-primary add-to-cart" data-product-id="5">
+                                    <i class="fas fa-shopping-cart"></i> Añadir
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- Producto 7 -->
-                <div class="col-lg-2 col-md-3 col-6 mb-2">
-                    <div class="card">
-                        <img src="img/phantom.jpg" class="card-img-top" alt="Perfume 6">
-                        <div class="card-body">
-                            <h5 class="card-title">Phantom</h5>
-                            <p class="card-text">Paco Rabanne EDT 100ml</p>
-                            <p class="card-text"><strong>$75.000</strong></p>
-                            <a href="#" class="btn btn-primary">
-                                <i class="fas fa-shopping-cart"></i> Añadir
-                            </a>
+                    <!-- Producto 6 -->
+                    <div class="col-lg-2 col-md-3 col-6 mb-2" data-price="25000" data-brand="Halloween">
+                        <div class="card product-card">
+                            <img src="img/manX.jpg" class="card-img-top" alt="Perfume 6">
+                            <div class="card-body">
+                                <h5 class="card-title">Halloween Man X</h5>
+                                <p class="card-text">Halloween EDT 100ml</p>
+                                <p class="card-text card-price"><strong>$25.000</strong></p>
+                                <a href="#" class="btn btn-primary add-to-cart" data-product-id="6">
+                                    <i class="fas fa-shopping-cart"></i> Añadir
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- Producto 8 -->
-                <div class="col-lg-2 col-md-3 col-6 mb-2">
-                    <div class="card">
-                        <img src="img/toyBoy.jpg" class="card-img-top" alt="Perfume 6">
-                        <div class="card-body">
-                            <h5 class="card-title">Toy Boy</h5>
-                            <p class="card-text">Moschino EDP 100ml</p>
-                            <p class="card-text"><strong>$80.000</strong></p>
-                            <a href="#" class="btn btn-primary">
-                                <i class="fas fa-shopping-cart"></i> Añadir
-                            </a>
+                    <!-- Producto 7 -->
+                    <div class="col-lg-2 col-md-3 col-6 mb-2" data-price="75000" data-brand="Paco Rabanne">
+                        <div class="card product-card">
+                            <img src="img/phantom.jpg" class="card-img-top" alt="Perfume 6">
+                            <div class="card-body">
+                                <h5 class="card-title">Phantom</h5>
+                                <p class="card-text">Paco Rabanne EDT 100ml</p>
+                                <p class="card-text card-price"><strong>$75.000</strong></p>
+                                <a href="#" class="btn btn-primary add-to-cart" data-product-id="7">
+                                    <i class="fas fa-shopping-cart"></i> Añadir
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- Producto 9 -->
-                <div class="col-lg-2 col-md-3 col-6 mb-2">
-                    <div class="card">
-                        <img src="img/jpgUltraMale.jpg" class="card-img-top" alt="Perfume 6">
-                        <div class="card-body">
-                            <h5 class="card-title">Ultra Male</h5>
-                            <p class="card-text">Jean Paul Gaultier EDT 75ml</p>
-                            <p class="card-text"><strong>$50.000</strong></p>
-                            <a href="#" class="btn btn-primary">
-                                <i class="fas fa-shopping-cart"></i> Añadir
-                            </a>
+                    <!-- Producto 8 -->
+                    <div class="col-lg-2 col-md-3 col-6 mb-2" data-price="80000" data-brand="Moschino">
+                        <div class="card product-card">
+                            <img src="img/toyBoy.jpg" class="card-img-top" alt="Perfume 6">
+                            <div class="card-body">
+                                <h5 class="card-title">Toy Boy</h5>
+                                <p class="card-text">Moschino EDP 100ml</p>
+                                <p class="card-text card-price"><strong>$80.000</strong></p>
+                                <a href="#" class="btn btn-primary add-to-cart" data-product-id="8">
+                                    <i class="fas fa-shopping-cart"></i> Añadir
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- Producto 10 -->
-                <div class="col-lg-2 col-md-3 col-6 mb-2">
-                    <div class="card">
-                        <img src="img/afnanTurathiBlue.jpg" class="card-img-top" alt="Perfume 6">
-                        <div class="card-body">
-                            <h5 class="card-title">Turathi Blue</h5>
-                            <p class="card-text">Afnan EDT 100ml</p>
-                            <p class="card-text"><strong>$32.000</strong></p>
-                            <a href="#" class="btn btn-primary">
-                                <i class="fas fa-shopping-cart"></i> Añadir
-                            </a>
+                    <!-- Producto 9 -->
+                    <div class="col-lg-2 col-md-3 col-6 mb-2" data-price="50000" data-brand="Jean Paul Gaultier">
+                        <div class="card product-card">
+                            <img src="img/jpgUltraMale.jpg" class="card-img-top" alt="Perfume 6">
+                            <div class="card-body">
+                                <h5 class="card-title">Ultra Male</h5>
+                                <p class="card-text">Jean Paul Gaultier EDT 75ml</p>
+                                <p class="card-text card-price"><strong>$50.000</strong></p>
+                                <a href="#" class="btn btn-primary add-to-cart" data-product-id="9">
+                                    <i class="fas fa-shopping-cart"></i> Añadir
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- Producto 11 -->
-                <div class="col-lg-2 col-md-3 col-6 mb-2">
-                    <div class="card">
-                        <img src="img/spiceBomb.jpg" class="card-img-top" alt="Perfume 6">
-                        <div class="card-body">
-                            <h5 class="card-title">Spicebomb Extreme</h5>
-                            <p class="card-text">Viktor&Rolf EDP 100ml</p>
-                            <p class="card-text"><strong>$120.000</strong></p>
-                            <a href="#" class="btn btn-primary">
-                                <i class="fas fa-shopping-cart"></i> Añadir
-                            </a>
+                    <!-- Producto 10 -->
+                    <div class="col-lg-2 col-md-3 col-6 mb-2" data-price="32000" data-brand="Afnan">
+                        <div class="card product-card">
+                            <img src="img/afnanTurathiBlue.jpg" class="card-img-top" alt="Perfume 6">
+                            <div class="card-body">
+                                <h5 class="card-title">Turathi Blue</h5>
+                                <p class="card-text">Afnan EDT 100ml</p>
+                                <p class="card-text card-price"><strong>$32.000</strong></p>
+                                <a href="#" class="btn btn-primary add-to-cart" data-product-id="10">
+                                    <i class="fas fa-shopping-cart"></i> Añadir
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!-- Producto 12 -->
-                <div class="col-lg-2 col-md-3 col-6 mb-2">
-                    <div class="card">
-                        <img src="img/theMostWanted.jpg" class="card-img-top" alt="Perfume 6">
-                        <div class="card-body">
-                            <h5 class="card-title">The Most Wanted</h5>
-                            <p class="card-text">Azzaro EDP 100ml</p>
-                            <p class="card-text"><strong>$85.000</strong></p>
-                            <a href="#" class="btn btn-primary">
-                                <i class="fas fa-shopping-cart"></i> Añadir
-                            </a>
+                    <!-- Producto 11 -->
+                    <div class="col-lg-2 col-md-3 col-6 mb-2" data-price="120000" data-brand="Viktor&Rolf">
+                        <div class="card product-card">
+                            <img src="img/spiceBomb.jpg" class="card-img-top" alt="Perfume 6">
+                            <div class="card-body">
+                                <h5 class="card-title">Spicebomb Extreme</h5>
+                                <p class="card-text">Viktor&Rolf EDP 100ml</p>
+                                <p class="card-text card-price"><strong>$120.000</strong></p>
+                                <a href="#" class="btn btn-primary add-to-cart" data-product-id="11">
+                                    <i class="fas fa-shopping-cart"></i> Añadir
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Producto 12 -->
+                    <div class="col-lg-2 col-md-3 col-6 mb-2" data-price="85000" data-brand="Azzaro">
+                        <div class="card product-card">
+                            <img src="img/theMostWanted.jpg" class="card-img-top" alt="Perfume 6">
+                            <div class="card-body">
+                                <h5 class="card-title">The Most Wanted</h5>
+                                <p class="card-text">Azzaro EDP 100ml</p>
+                                <p class="card-text card-price"><strong>$85.000</strong></p>
+                                <a href="#" class="btn btn-primary add-to-cart" data-product-id="12">
+                                    <i class="fas fa-shopping-cart"></i> Añadir
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
-    <!--//////////FOOTER//////////-->
-    <footer class="card text-center">
-        <div class="card-header">
-            ¡Descubre la esencia del paraíso con Paradise Essence!
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">¡Explora nuestro mundo de fragancias únicas!</h5>
-            <p class="card-text">Sumérgete en una experiencia sensorial con nuestras exquisitas fragancias. Encuentra la
-                perfecta para cada ocasión y deja que Paradise Essence te transporte a un paraíso olfativo inigualable.
-            </p>
-            <a href="#" class="btn btn-primary">Explorar Perfumes</a>
-        </div>
-        <div class="card-footer text-body-secondary">
-            Síguenos en las redes sociales para descubrir las últimas novedades y ofertas exclusivas<br>
-            <a href="#" class="text-decoration-none text-body-secondary me-1"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="text-decoration-none text-body-secondary me-1"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="text-decoration-none text-body-secondary me-1"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="text-decoration-none text-body-secondary me-1"><i class="fab fa-pinterest"></i></a>
-            <a href="#" class="text-decoration-none text-body-secondary"><i class="fab fa-youtube"></i></a>
-        </div>
-    </footer>
+        <!--//////////FOOTER//////////-->
+        <footer class="card text-center">
+            <div class="card-header">
+                ¡Descubre la esencia del paraíso con Paradise Essence!
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">¡Explora nuestro mundo de fragancias únicas!</h5>
+                <p class="card-text">Sumérgete en una experiencia sensorial con nuestras exquisitas fragancias.
+                    Encuentra la
+                    perfecta para cada ocasión y deja que Paradise Essence te transporte a un paraíso olfativo
+                    inigualable.
+                </p>
+                <a href="#" class="btn btn-primary">Explorar Perfumes</a>
+            </div>
+            <div class="card-footer text-body-secondary">
+                Síguenos en las redes sociales para descubrir las últimas novedades y ofertas exclusivas<br>
+                <a href="#" class="text-decoration-none text-body-secondary me-1"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-decoration-none text-body-secondary me-1"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-decoration-none text-body-secondary me-1"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-decoration-none text-body-secondary me-1"><i class="fab fa-pinterest"></i></a>
+                <a href="#" class="text-decoration-none text-body-secondary"><i class="fab fa-youtube"></i></a>
+            </div>
+        </footer>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-    <script>
-        // Verificar si hay una sesión activa al cargar la página
-        const isUserLoggedIn = localStorage.getItem('isLoggedIn');
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+        <script>
+            // Verificar si hay una sesión activa al cargar la página
+            const isUserLoggedIn = localStorage.getItem('isLoggedIn');
 
-        if (isUserLoggedIn) {
-            // Si hay un usuario autenticado, cambia el contenido del enlace a "Salir"
-            loginNavItem.innerHTML = `
+            if (isUserLoggedIn) {
+                // Si hay un usuario autenticado, cambia el contenido del enlace a "Salir"
+                loginNavItem.innerHTML = `
             <a class="nav-link" href="/perfil.html">
                             <i class="fas fa-user"></i><br>
                             Perfil
                         </a>`;
-            // Añade evento clic para cerrar sesión
-            const logoutLink = document.getElementById('logoutLink');
-            logoutLink.addEventListener('click', function () {
-                localStorage.removeItem("isLoggedIn"); // Elimina la sesión del usuario
-                window.location.href = '/login.html'; // Redirige a la página de inicio de sesión
-            });
-        }
-    </script>
+                // Añade evento clic para cerrar sesión
+                const logoutLink = document.getElementById('logoutLink');
+                logoutLink.addEventListener('click', function () {
+                    localStorage.removeItem("isLoggedIn"); // Elimina la sesión del usuario
+                    window.location.href = '/login.html'; // Redirige a la página de inicio de sesión
+                });
+            }
+        </script>
 </body>
 
 </html>
